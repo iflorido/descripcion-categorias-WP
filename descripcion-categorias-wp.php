@@ -167,19 +167,24 @@ function iflorido_plugin_info($result, $action, $args) {
     }
 
     $github_repo = 'iflorido/descripcion-categorias-WP';
-    $response = wp_remote_get("https://api.github.com/repos/$github_repo");
 
-    if ( is_wp_error($response) ) return false;
+    // Obtener datos del repositorio
+    $repo_response = wp_remote_get("https://api.github.com/repos/$github_repo");
+    if ( is_wp_error($repo_response) ) return false;
+    $repo_data = json_decode(wp_remote_retrieve_body($repo_response));
 
-    $repo_data = json_decode(wp_remote_retrieve_body($response));
+    // Obtener la última release para la versión
+    $release_response = wp_remote_get("https://api.github.com/repos/$github_repo/releases/latest");
+    $release_data = !is_wp_error($release_response) ? json_decode(wp_remote_retrieve_body($release_response)) : null;
+    $version = $release_data->tag_name ?? '1.0.4';
 
     return (object)[
         'name' => $repo_data->name,
         'slug' => $plugin_slug,
-        'version' => $repo_data->tag_name ?? '1.0.4',
+        'version' => $version,
         'author' => '<a href="https://cv.iflorido.es">Ignacio Florido - iflorido@gmail.com</a>',
         'homepage' => $repo_data->html_url,
-        'download_link' => "https://github.com/$github_repo/zipball/master",
+        'download_link' => "https://github.com/$github_repo/releases/download/{$version}/descripcion-categorias-wp-{$version}.zip",
         'sections' => [
             'description' => $repo_data->description,
             'changelog' => 'Ver cambios en el repositorio.',
