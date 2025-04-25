@@ -186,8 +186,8 @@ function iflorido_plugin_info($result, $action, $args) {
         'homepage' => $repo_data->html_url,
         'download_link' => "https://github.com/$github_repo/releases/download/{$version}/descripcion-categorias-wp-{$version}.zip",
         'sections' => [
-            'description' => $repo_data->description,
-            'changelog' => 'Ver cambios en el repositorio.',
+            'description' => $repo_data->description ?? 'Plugin para mostrar descripciones en categorías.',
+            'changelog' => 'Ver cambios en el <a href="https://github.com/' . $github_repo . '/releases">repositorio</a>.',
         ],
     ];
 }
