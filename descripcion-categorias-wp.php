@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Descripción por Categorías
-Plugin URI: https://github.com/iflorido/descripcion-categorias-wp
+Plugin URI: https://github.com/iflorido/descripcion-categorias-WP
 Description: Añade descripciones superior e inferior en categorías de entradas.
-Version: 1.0.3
+Version: 1.0.4
 Author: Ignacio Florido - iflorido@gmail.com
 Author URI: https://cv.iflorido.es
-Update URI: https://github.com/iflorido/descripcion-categorias-wp
+Update URI: https://github.com/iflorido/descripcion-categorias-WP
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -151,7 +151,7 @@ function iflorido_check_for_plugin_update( $transient ) {
             'slug'        => $plugin_slug,
             'plugin'      => $plugin_file,
             'new_version' => $release->tag_name,
-            'package' => 'https://github.com/iflorido/descripcion-categorias-WP/releases/download/1.0.3/descripcion-categorias-wp-1.0.3.zip',
+            'package' => "https://github.com/iflorido/descripcion-categorias-WP/releases/download/{$release->tag_name}/descripcion-categorias-wp-{$release->tag_name}.zip",
             'url'         => "https://github.com/$github_repo",
         ];
     }
@@ -176,7 +176,7 @@ function iflorido_plugin_info($result, $action, $args) {
     return (object)[
         'name' => $repo_data->name,
         'slug' => $plugin_slug,
-        'version' => $repo_data->tag_name ?? '1.0.3',
+        'version' => $repo_data->tag_name ?? '1.0.4',
         'author' => '<a href="https://cv.iflorido.es">Ignacio Florido - iflorido@gmail.com</a>',
         'homepage' => $repo_data->html_url,
         'download_link' => "https://github.com/$github_repo/zipball/master",
