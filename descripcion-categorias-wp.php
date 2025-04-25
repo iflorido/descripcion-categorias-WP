@@ -151,7 +151,7 @@ function iflorido_check_for_plugin_update( $transient ) {
             'slug'        => $plugin_slug,
             'plugin'      => $plugin_file,
             'new_version' => $release->tag_name,
-            'package'     => $release->zipball_url,
+            'package' => 'https://github.com/iflorido/descripcion-categorias-WP/releases/download/1.0.3/descripcion-categorias-wp-1.0.3.zip',
             'url'         => "https://github.com/$github_repo",
         ];
     }
