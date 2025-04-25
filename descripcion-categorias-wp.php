@@ -3,7 +3,7 @@
 Plugin Name: Descripción por Categorías
 Plugin URI: https://github.com/iflorido/descripcion-categorias-WP
 Description: Añade descripciones superior e inferior en categorías de entradas.
-Version: 1.0.4
+Version: 1.0.5
 Author: Ignacio Florido - iflorido@gmail.com
 Author URI: https://cv.iflorido.es
 Update URI: https://github.com/iflorido/descripcion-categorias-WP
